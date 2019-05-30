@@ -1,0 +1,18 @@
+h2{
+    color:lightgreen;
+}
+
+#home{
+    display:'flex';
+    flex-wrap:'wrap';
+}
+
+.listView{
+    overflow: auto;
+    position: relative;
+    max-height: 500px;
+}
+
+.error{
+    color:red;
+}
