@@ -98,7 +98,7 @@ function validateString(text){
     //Validate Empty String
     if(text === "") return {error:"Input is Empty"};
     
-    let strInput = text;
+    let strInput = text.trim();
     let txt,x,y,z,res1,res2,res3,res4;
     x = strInput.indexOf(strInput.match(/[1-9]/));
     
@@ -106,11 +106,12 @@ function validateString(text){
     if(x === -1) return {error:"Value is Empty/Invalid"};
 
     //Validate invalid Rp currency format
-    txt = strInput.slice(0,strInput.indexOf(strInput.match(/[1-9]/)));
-    txt.trim();
-    let checkTxt = txt.match(new RegExp("rp","i"));
-    if(checkTxt === null) return {error:"Invalid Currency Format. Please Start with Rp"};
-
+    if(x !== 0){
+        txt = strInput.slice(0,strInput.indexOf(strInput.match(/[1-9]/)));
+        txt.trim();
+        let checkTxt = txt.match(new RegExp("rp","i"));
+        if(checkTxt === null) return {error:"Invalid Currency Format. Please Start with Rp"};
+    }
     res1 = strInput.slice(x);
     y = res1.indexOf(res1.match(/[^0-9.,]\S+/));
     //Validate Whitespaces
